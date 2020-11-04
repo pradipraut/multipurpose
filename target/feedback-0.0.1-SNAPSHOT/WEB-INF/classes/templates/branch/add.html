@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragment/head :: headerFragment">
+    <title id="pageTitle">Student | Vlearning </title>
+
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <div th:replace="fragment/sidebar :: sidebar"></div>
+
+    <!-- Content Wrapper -->
+    <div class="d-flex flex-column" id="content-wrapper">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <div class="sidebar-color"  th:replace="fragment/notification :: notification"></div>
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-4 text-gray-800 text-center"><span th:text="${action == 'add'} ? 'Add' : 'Update'"/> Branch!</h1>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="wrap">
+                            <form th:action="'/auth/admin/branch/'+${action}" method="post">
+                                <input hidden readonly th:value="${branch != null} ? ${branch.getId()}" name="id">
+                                <input hidden readonly th:value="${branch != null} ? ${branch.userId}" name="userId">
+                                <div class="mat-div">
+                                    <label class="mat-label" for="branch-name">Branch Name</label>
+                                    <input autocomplete="off" class="mat-input" id="branch-name"
+                                           name="branchName" required
+                                           th:maxlength="20"
+                                           th:min="4" th:value="${branch != null} ? ${branch.branchName}" type="text">
+                                </div>
+                                <p class="text-danger" th:if="${error != null}"
+                                   th:text="${error.branchName != null} ? ${error.branchName}"></p>
+
+                                <div class="mat-div">
+                                    <label class="mat-label" for="branch-code">Branch Code</label>
+                                    <input autocomplete="off" class="mat-input"
+                                           id="branch-code"
+                                           name="branchCode" required
+                                           th:value="${branch != null} ? ${branch.branchCode}" type="text">
+                                </div>
+                                <p class="text-danger" th:if="${error != null}"
+                                   th:text="${error.branchCode != null} ? ${error.branchCode}"></p>
+
+                                <div class="mat-div">
+                                    <label class="mat-label" for="address">Address</label>
+                                    <input autocomplete="off" class="mat-input"
+                                           id="address" name="address"
+                                           required th:value="${branch != null} ? ${branch.address}" type="text">
+                                </div>
+                                <p class="text-danger" th:if="${error != null}"
+                                   th:text="${error.address != null} ? ${error.address}"></p>
+
+                                <div class="mat-div">
+                                    <label class="mat-label" for="email">Email</label>
+                                    <input autocomplete="off" class="mat-input"
+                                           id="email" name="email"
+                                           required th:value="${user != null} ? ${user.email}" type="email">
+                                </div>
+                                <p class="text-danger" th:if="${userError != null}"
+                                   th:text="${userError.email != null} ? ${userError.email}"></p>
+
+                                <div class="mat-div">
+                                    <label class="mat-label" for="username">Username</label>
+                                    <input autocomplete="off" class="mat-input"
+                                           id="username" name="username"
+                                           required th:value="${user != null} ? ${user.username}" type="text">
+                                </div>
+                                <p class="text-danger" th:if="${userError != null}"
+                                   th:text="${userError.userName != null} ? ${userError.userName}"></p>
+
+                                <div class="mat-div">
+                                    <label class="mat-label" for="password">Password</label>
+                                    <input autocomplete="off" class="mat-input"
+                                           id="password" name="password"
+                                           required th:value="${user != null} ? ${user.password}"
+                                           type="password">
+                                </div>
+                                <p class="text-danger" th:if="${userError != null}"
+                                   th:text="${userError.password != null} ? ${userError.password}"></p>
+
+                                <p class="text-danger" th:if="${error != null}"
+                                   th:text="${error.size}"></p>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <button class="btn btn-danger btn-user btn-block" onclick="window.location.href='/auth/admin/branch/list'" type="button">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="btn btn-primary btn-user btn-block" type="submit"><span th:text="${action == 'add'} ? 'Add' : 'Update'"/> Branch</button>
+
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <div th:replace="fragment/footer :: footer"></div>
+        <!-- End of Footer -->
+
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+
+<div th:replace="fragment/script :: script"></div>
+</body>
+
+</html>
