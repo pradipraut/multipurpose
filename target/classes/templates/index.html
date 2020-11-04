@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragment/head :: headerFragment">
+    <title id="pageTitle">Dashboard |</title>
+
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <div class="sidebar-color" th:replace="fragment/sidebar :: sidebar"></div>
+
+    <!-- Content Wrapper -->
+    <div class="d-flex flex-column" id="content-wrapper">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <div th:replace="fragment/notification :: notification"></div>
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    <!--            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+                </div>
+
+                <!-- Content Row -->
+                <div class="row">
+
+                    <!-- Earnings (Monthly) Card Example -->
+                    <!--<div th:each="b : ${branch}" th:onclick="'window.location.href=\'/auth/admin/tellerlist/' + ${b.id} + '\''"-->
+                    <!--class="col-xl-3 col-md-6 mb-4 cursor-dashboard">-->
+                    <!--<div class="card border-left-success shadow h-100 py-2">-->
+                    <!--<div class="card-body">-->
+                    <!--<div class="row no-gutters align-items-center">-->
+                    <!--<div class="col mr-2">-->
+                    <!--<div class="text-xs font-weight-bold text-success text-uppercase mb-1"><span-->
+                    <!--th:text="${b.getBranchName()}"></span></div>-->
+                    <!--<div class="h5 mb-0 font-weight-bold text-gray-800"><span-->
+                    <!--th:text="${b.getUserLogin()}"/></div>-->
+                    <!--</div>-->
+                    <!--<div class="col-auto">-->
+                    <!--<i class="fa fa-code-branch fa-2x text-gray-300"></i>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
+
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <div th:replace="fragment/footer :: footer"></div>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<div th:replace="fragment/script :: script"></div>
+</body>
+
+</html>

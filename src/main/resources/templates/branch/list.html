@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="fragment/head :: headerFragment">
+    <title id="pageTitle"></title>
+
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <div class="sidebar-color"  th:replace="fragment/sidebar :: sidebar"></div>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <div th:replace="fragment/notification :: notification"></div>
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Student List</h6>
+                                <a class="float-lg-right btn btn-secondary btn-icon-split" href="/auth/admin/branch/add">
+                                    <span class="icon text-white-50">
+                                       <i class="fa fa-plus-circle"></i>
+                                    </span>
+                                    <span class="text">Add</span>
+                                </a>
+                            </div>
+                            <!--/*@thymesVar id="message" type=""*/-->
+                            <div class="alert alert-success alert-dismissible" role="alert" th:if="${message} eq 'Success'">
+                                <a aria-label="close" class="close" data-dismiss="alert" href="#">&times;</a>
+                                <strong>Success!</strong> <em><!--/*@thymesVar id="txt" type=""*/-->
+                                <span th:text="${txt}"></span></em>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                        <tr>
+                                            <th>S.No</th>
+                                            <th>Student Name</th>
+                                            <th> Address</th>
+                                            <th>Code</th>
+                                            <th>Level</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tfoot>
+                                        <tr>
+                                            <th>S.No</th>
+                                            <th>Student Name</th>
+                                            <th> Address</th>
+                                            <th>Code</th>
+                                            <th>Level</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </tfoot>
+                                        <tbody>
+                                        <tr th:each="br,index :${branch}">
+                                            <td th:text="${index.count}"></td>
+                                            <td th:text="${br.branchName}"></td>
+                                            <td th:text="${br.address}"></td>
+                                            <td th:text="${br.branchCode}"></td>
+                                            <td th:text="${br.userLogin}"></td>
+                                            <td><a  data-toggle="tooltip" title="Edit" data-placement="bottom" th:href="'/auth/admin/branch/edit/'+${br.getId()}" class="btn btn-info btn-circle"><i class="fa fa-edit"></i></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <div th:replace="fragment/footer :: footer"></div>
+        <!-- End of Footer -->
+
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+
+<div th:replace="fragment/script :: script"></div>
+</body>
+
+</html>

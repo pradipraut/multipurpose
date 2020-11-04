@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragment/head :: headerFragment">
+    <title id="pageTitle">Login |  </title>
+
+</head>
+<body class="bg-gradient-primary">
+
+<div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <!--              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>-->
+                        <div class="col-lg-6">
+                            <img src="/img/undraw_Login_re_4vu2%20(1).svg" style="width: 115%; margin-top: 80px;">
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                </div>
+                                <div class="alert alert-danger" th:if="${#request.getParameter('error') == 'true'}">
+                                    Login Failed!!!<br/>
+                                    Reason :
+                                    <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+                                          th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+                Static summary</span>
+
+                                </div>
+                                <form action="/login" class="user" method="post">
+                                    <div class="form-group">
+                                        <input aria-describedby="emailHelp" class="form-control form-control-user" id="exampleInputEmail"
+                                               name="username" placeholder="Username..."
+                                               type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control form-control-user" id="exampleInputPassword" name="password"
+                                               placeholder="Password" type="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox small">
+                                            <input class="custom-control-input" id="customCheck" type="checkbox">
+                                            <!--                        <label class="custom-control-label" for="customCheck">Remember Me</label>-->
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary btn-user btn-block" type="submit"> Login</button>
+                                </form>
+                                <hr>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div th:replace="fragment/script :: script"></div>
+
+</body>
+
+</html>
